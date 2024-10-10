@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "teste-driva"
+version = "0.1.0"
+description = ""
+authors = ["Pedro <pedroarthuralvesdeoliveira@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+duckdb = "^1.1.1"
+streamlit = "^1.39.0"
+plotly = "^5.24.1"
+openpyxl = "^3.1.5"
+numpy = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
