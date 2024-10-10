@@ -8,7 +8,11 @@ etl.load_products()
 # etl.best_selling_days()
 # etl.daily_sales()
 # etl.sales_per_product()
-etl.best_banana_selling_day()
+etl.count_abacaxi_sales()
+etl.count_laranja_sales()
+etl.best_selling_product_in_kg()
+etl.best_selling_product_in_kg_another_way_of_doing_it()
+# etl.best_banana_selling_day()
 
 st.title('Teste Driva - Análise de vendas na Feira')
 
