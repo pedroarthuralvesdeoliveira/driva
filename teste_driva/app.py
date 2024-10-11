@@ -48,5 +48,9 @@ data = etl.con.execute("SELECT * FROM sales_by_time_range").fetchdf()
 fig = px.bar(data, x='HORA', y='TOTAL', title='Vendas por hora')
 st.plotly_chart(fig)
 
+st.write('Relação entre peso do produto por KG e faturamento')
+chart_data = etl.con.execute("SELECT * FROM sales_per_product").fetchdf()
+st.scatter_chart(chart_data, x='PREÇO_KG', y='TOTAL_VENDA', x_label='PREÇO POR KG', y_label='TOTAL', color='NOME_PRODUTO')
+
 if __name__ == '__main__':
     pass

@@ -26,7 +26,7 @@ class MarketData:
         self.con.execute("CREATE VIEW IF NOT EXISTS monthly_sales AS SELECT STRFTIME('%m/%Y', DATA) AS MES, SUM(VALOR_VENDA) AS TOTAL_VENDA FROM sales GROUP BY MES ORDER BY MES").fetchall()
 
     def sales_per_product(self):
-        return self.con.execute("SELECT s.ID_PRODUTO, SUM(s.VALOR_VENDA) AS TOTAL_VENDA FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO GROUP BY s.ID_PRODUTO, p.NOME_PRODUTO ORDER BY TOTAL_VENDA DESC").fetchall()
+        return self.con.execute("CREATE VIEW IF NOT EXISTS sales_per_product AS  SELECT p.PREÇO_KG, SUM(s.VALOR_VENDA) AS TOTAL_VENDA, p.NOME_PRODUTO FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO GROUP BY p.PREÇO_KG, p.NOME_PRODUTO ORDER BY TOTAL_VENDA DESC").fetchall()
 
     def best_selling_product_in_kg(self):
         return self.con.execute("SELECT p.NOME_PRODUTO, COUNT(p.ID_PRODUTO), SUM(s.VALOR_VENDA) AS TOTAL_VENDAS, SUM((s.VALOR_VENDA / p.PREÇO_KG)) AS Quantidade_Vendida_KG FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO GROUP BY p.NOME_PRODUTO ORDER BY Quantidade_Vendida_KG DESC LIMIT 1").fetchone()
