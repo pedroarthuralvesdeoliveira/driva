@@ -22,5 +22,9 @@ st.header('2 - Melhor dia em vendas')
 best_day, best_revenue = etl.best_selling_day()
 st.write(f'O melhor dia em vendas foi {best_day} com um faturamento de R${best_revenue:.2f}')
 
+st.header('3 - Dia que mais vendeu bananas')
+day, date, revenue, count = etl.best_banana_selling_day()
+st.write(f'O dia que mais vendeu bananas foi {date} com um faturamento de R${revenue:.2f} e {count} vendas')
+
 if __name__ == '__main__':
     pass

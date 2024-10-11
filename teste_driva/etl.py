@@ -30,7 +30,7 @@ class MarketData:
         return self.con.execute("SELECT p.NOME_PRODUTO, COUNT(p.ID_PRODUTO), SUM(s.VALOR_VENDA) AS TOTAL_VENDAS, SUM((s.VALOR_VENDA / p.PREÇO_KG)) AS Quantidade_Vendida_KG FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO GROUP BY p.NOME_PRODUTO ORDER BY Quantidade_Vendida_KG DESC LIMIT 1").fetchone()
 
     def best_banana_selling_day(self):
-        return self.con.execute("SELECT EXTRACT(DAY FROM DATA) AS DAY, s.DATA, SUM(VALOR_VENDA) AS TOTAL_VENDA, COUNT(p.ID_PRODUTO) FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO  WHERE p.NOME_PRODUTO = 'Banana' GROUP BY DAY, DATA ORDER BY TOTAL_VENDA DESC LIMIT 1").fetchone()
+        return self.con.execute("SELECT EXTRACT(DAY FROM DATA) AS DAY, STRFTIME('%d/%m/%Y', s.DATA), SUM(VALOR_VENDA) AS TOTAL_VENDA, COUNT(p.ID_PRODUTO) FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO  WHERE p.NOME_PRODUTO = 'Banana' GROUP BY DAY, DATA ORDER BY TOTAL_VENDA DESC LIMIT 1").fetchone()
     
 
 if __name__ == '__main__':
