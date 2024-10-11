@@ -77,12 +77,6 @@ teste-driva/
 - Análise de vendas por produto
 - Sugestões estratégicas baseadas nos dados
 
-## 🧪 Testes
-
-Para executar os testes de validação:
-```bash
-poetry run python teste-driva/tests/test_etl.py
-```
 
 ## 📈 Exemplos de Visualizações
 
