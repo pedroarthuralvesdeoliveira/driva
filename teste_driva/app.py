@@ -23,8 +23,19 @@ best_day, best_revenue = etl.best_selling_day()
 st.write(f'O melhor dia em vendas foi {best_day} com um faturamento de R${best_revenue:.2f}')
 
 st.header('3 - Dia que mais vendeu bananas')
-day, date, revenue, count = etl.best_banana_selling_day()
+date, revenue, count = etl.best_banana_selling_day()
 st.write(f'O dia que mais vendeu bananas foi {date} com um faturamento de R${revenue:.2f} e {count} vendas')
+
+st.header('4 - Produto que vende em maior quantidade (KG)')
+product, count, revenue, kg = etl.best_selling_product_in_kg()
+st.write(f'O produto que vende em maior quantidade é {product} com {count} vendas e um faturamento de R${revenue:.2f} e {kg:.2f} KG vendidos')
+
+st.header('5 - Estratégias para aumentar o faturamento')
+st.write("""
+-  **Foco em dias de pico**: Investir em promoções e descontos em dias de pico de vendas.
+-  **Otimização de mix de produtos**: Priorizar produtos com maior margem de lucro.
+-  **Promoções direcionadas**: Criar promoções direcionadas para produtos com menor saída ou em dias de baixo movimento.
+""")
 
 if __name__ == '__main__':
     pass
