@@ -65,8 +65,7 @@ teste-driva/
 │   ├── app.py           # Aplicação Streamlit
 │   ├── etl.py           # Lógica de ETL
 │   ├── data/            # Dados de entrada
-└── tests/
-    └── test_validation.py
+└
 ```
 
 ## 🔍 Funcionalidades
