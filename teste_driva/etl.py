@@ -22,6 +22,9 @@ class MarketData:
     def daily_sales(self):
         self.con.execute("CREATE VIEW IF NOT EXISTS daily_sales AS SELECT DATA, SUM(VALOR_VENDA) AS TOTAL_VENDA FROM sales GROUP BY DATA ORDER BY DATA").fetchall()
 
+    def monthly_sales(self):
+        self.con.execute("CREATE VIEW IF NOT EXISTS monthly_sales AS SELECT STRFTIME('%m/%Y', DATA) AS MES, SUM(VALOR_VENDA) AS TOTAL_VENDA FROM sales GROUP BY MES ORDER BY MES").fetchall()
+
     def sales_per_product(self):
         return self.con.execute("SELECT s.ID_PRODUTO, SUM(s.VALOR_VENDA) AS TOTAL_VENDA FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO GROUP BY s.ID_PRODUTO, p.NOME_PRODUTO ORDER BY TOTAL_VENDA DESC").fetchall()
 
@@ -30,6 +33,9 @@ class MarketData:
 
     def best_banana_selling_day(self):
         return self.con.execute("SELECT STRFTIME('%d/%m/%Y', s.DATA), SUM(VALOR_VENDA) AS TOTAL_VENDA, COUNT(p.ID_PRODUTO) FROM sales s INNER JOIN products p ON s.ID_PRODUTO = p.ID_PRODUTO  WHERE p.NOME_PRODUTO = 'Banana' GROUP BY DATA ORDER BY TOTAL_VENDA DESC LIMIT 1").fetchone()
+
+    def sales_by_time_range(self):
+        return self.con.execute("CREATE VIEW IF NOT EXISTS sales_by_time_range AS SELECT FAIXA_HORARIO AS HORA, SUM(VALOR_VENDA) AS TOTAL FROM sales GROUP BY HORA ORDER BY HORA").fetchall()
     
 
 if __name__ == '__main__':
@@ -39,6 +45,8 @@ if __name__ == '__main__':
     market_data.load_products()
     market_data.best_selling_day()
     market_data.daily_sales()
+    market_data.monthly_sales()
     market_data.sales_per_product()
     market_data.best_selling_product_in_kg()
     market_data.best_banana_selling_day()
+    market_data.sales_by_time_range()
