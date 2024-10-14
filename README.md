@@ -41,7 +41,7 @@ poetry install
 
 ### Preparação dos Dados
 
-1. Coloque seu arquivo CSV de dados na pasta `teste-driva/data/`
+1. Coloque seu arquivo XLSX de dados na pasta `teste-driva/data/`
 2. O arquivo deve conter as seguintes colunas:
    - `id_produto` (será convertido para int)
    - `data` (formato esperado: yyyy/mm/dd)
