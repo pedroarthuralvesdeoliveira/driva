@@ -61,7 +61,10 @@ teste-driva/
 ├── README.md
 ├── pyproject.toml
 ├── teste-driva/
-│   ├── __init__.py
+│   ├──  data/
+│   │       arquivo.XLSX
+│   └
+    ├── __init__.py
 │   ├── app.py           # Aplicação Streamlit
 │   ├── etl.py           # Lógica de ETL
 │   ├── data/            # Dados de entrada
