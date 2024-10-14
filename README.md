@@ -64,7 +64,7 @@ teste-driva/
 │   ├──  data/
 │   │       arquivo.XLSX
 │   └
-    ├── __init__.py
+│   ├── __init__.py
 │   ├── app.py           # Aplicação Streamlit
 │   ├── etl.py           # Lógica de ETL
 │   ├── data/            # Dados de entrada
