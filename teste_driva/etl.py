@@ -1,16 +1,23 @@
 import pandas as pd 
 import duckdb
+from pathlib import Path
 
 class MarketData:
     def __init__(self, data_path):   
-        self.data_path = data_path
+        self.data_path = Path(data_path)
         self.con = duckdb.connect(database=':memory:')
 
     def load_sales(self):
-        df = pd.read_excel(self.data_path, sheet_name='vendas', header=0, dtype=object)
-        df['DATA'] = pd.to_datetime(df['DATA'], format='%d-%m-%y')
-        df['VALOR_VENDA'] = pd.to_numeric(df['VALOR_VENDA']).round(2)
-        self.con.execute("CREATE TABLE sales AS SELECT * FROM df")
+        try:
+            if not self.data_path.exists():
+                raise FileNotFoundError(f"File not found: {self.data_path}")
+            df = pd.read_excel(self.data_path, sheet_name='vendas', header=0, dtype=object)
+            df['DATA'] = pd.to_datetime(df['DATA'], format='%d-%m-%y')
+            df['VALOR_VENDA'] = pd.to_numeric(df['VALOR_VENDA']).round(2)
+            self.con.execute("CREATE TABLE sales AS SELECT * FROM df")
+        except Exception as e:
+            print(f"Error loading sales data: {e}")
+            raise
 
     def load_products(self):
         df = pd.read_excel(self.data_path, sheet_name='produtos', header=0, dtype=object)

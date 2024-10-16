@@ -2,9 +2,10 @@ import streamlit as st
 import plotly.express as px
 from etl import MarketData
 import os
+from pathlib import Path
 
-data_path = os.path.abspath('data/Cópia de Teste visualização de dados.xlsx')
-etl = MarketData(data_path=data_path)
+data_path = Path(__file__).parent / "data" / "Cópia de Teste visualização de dados.xlsx"
+etl = MarketData(data_path=str(data_path))
 etl.load_sales()
 etl.load_products()
 etl.best_selling_day()
