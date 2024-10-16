@@ -3,7 +3,7 @@ import plotly.express as px
 from etl import MarketData
 import os
 
-data_path = os.abspath('data/Cópia de Teste visualização de dados.xlsx')
+data_path = os.path.abspath('data/Cópia de Teste visualização de dados.xlsx')
 etl = MarketData(data_path=data_path)
 etl.load_sales()
 etl.load_products()
