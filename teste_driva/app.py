@@ -1,8 +1,10 @@
 import streamlit as st
 import plotly.express as px
 from etl import MarketData
+import os
 
-etl = MarketData('data/Cópia de Teste visualização de dados.xlsx')
+data_path = os.abspath('data/Cópia de Teste visualização de dados.xlsx')
+etl = MarketData(data_path=data_path)
 etl.load_sales()
 etl.load_products()
 etl.best_selling_day()
@@ -12,6 +14,8 @@ etl.sales_per_product()
 etl.best_selling_product_in_kg()
 etl.best_banana_selling_day()
 etl.sales_by_time_range()
+
+
 
 st.title('Teste Driva - Análise de vendas na Feira')
 
