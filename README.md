@@ -103,6 +103,11 @@ A aplicação Streamlit fornece:
 - Os dados utilizados são fictícios
 - Todas as vendas são consideradas dentro de uma mesma região
 
+## Resultado em produção: 
+
+Link do projeto: [teste-driva-estagio-em-inteligencia-de-mercado](https://teste-driva.streamlit.app/)
+
+
 ## 📫 Contato
 
 Pedro - [dev@pedrooliveira.tech]
