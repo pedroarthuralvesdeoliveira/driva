@@ -1,8 +1,8 @@
-# Teste técnico para estágio em inteligência de mercado da Driva
+# Teste para inteligência de mercado
 
 ## 📋 Sobre o Projeto
 
-Este projeto foi desenvolvido como resposta ao desafio de Inteligência de Mercado da Driva. O objetivo é analisar dados de vendas de uma feira e responder às seguintes questões:
+O objetivo é analisar dados de vendas de uma feira e responder às seguintes questões:
 
 1. Como está a evolução do faturamento em geral (todos os produtos)
 2. Qual foi o melhor dia em vendas
